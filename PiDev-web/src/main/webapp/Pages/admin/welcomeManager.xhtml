@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" 
+ template="/tmp/layoutadmin1.xhtml"
+ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
+<head>
+    <style>
+        #formdiv {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+ <ui:define name="content">
+<h:body>
+	 
+<div id="formdiv">    
+        <h:form id="frm">
+
+ <ui:param name="page_name" value="Connexion" /> 
+<h1>Welcome Manager</h1> 
+<h:panelGroup columns="2"><h:form><table>
+<tr><td colspan="2"> <h:commandButton value="Add Mission" action="#{missionBean.goToAddMission()}" /></td></tr>
+<tr><td colspan="2"> <h:commandButton value="Display Missions" action="#{missionBean.goToDisplayMissions()}" /></td></tr>
+
+</table></h:form></h:panelGroup>
+ 
+
+</h:form>
+</div>
+</h:body>
+</ui:define> 
+</ui:composition>

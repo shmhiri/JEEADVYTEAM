@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/tmp/layoutadmin1.xhtml"
+xmlns:p ="http://primefaces.org/ui">
+
+
+
+
+
+
+ 
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style>
+ 
+
+
+<ui:define name="menu">
+<h:form id="content" >
+<h1>Ajout formation</h1>
+<h:panelGrid columns="2" >
+
+<h:outputText value="Nom de la formation" /> <h:inputText value="#{FormationBean.nom_for}" class="form-control " required="true" requiredMessage="champs obligatoire" > 
+
+
+</h:inputText> 
+
+<h:outputText value="Prerequis" /> <h:inputText value="#{FormationBean.prerequis}" class="form-control" 
+required="true" requiredMessage="champs obligatoire"/>
+<h:outputText value="Niveau à atteindre"></h:outputText>
+<h:selectOneMenu id="m" value="#{FormationBean.niveauobt}" class="btn btn-secondary dropdown-toggle form-control" >
+<f:selectItem itemLabel="select maitrise" itemValue="" converter="javax.faces.Enum"/>
+
+		<f:selectItems value="#{MaitriseBean.maitrises}"  />
+			</h:selectOneMenu>
+
+
+
+<h:outputText value="Nom du formateur" /> <h:inputText value="#{FormationBean.nom_anim}" class="form-control" required="true" requiredMessage="champs obligatoire"/>
+<h:outputText value="Description" /> <h:inputTextarea cols="14" rows="4" style="width:150" value="#{FormationBean.description}" class="form-control" required="true" requiredMessage="champs obligatoire" > </h:inputTextarea>
+<h:outputText value="Date debut" /> 
+ <h:inputText value="#{FormationBean.date_debut}" class="form-control " required="true" requiredMessage="MM/dd/yyyy"> 
+    <f:convertDateTime pattern="MM/dd/yyyy" />
+</h:inputText>
+
+<h:outputText value="Durée" /> <h:inputText value="#{FormationBean.duree}" class="form-control" required="true" requiredMessage="champs obligatoire"/>
+<h:outputText value="Lieu" /> <h:inputText value="#{FormationBean.lieu}" class="form-control" required="true" requiredMessage="champs obligatoire"/>
+<h:outputText value="Selectionner un catalog"></h:outputText>
+
+<h:selectOneMenu id="k" value="#{FormationBean.selectedCatalogId}" class="form-control" >
+
+		<f:selectItems value="#{FormationBean.catalogs}" var="category"
+		 itemValue="#{category.id_cat}" itemLabel="#{category.nom_cat}" converter="javax.faces.Integer" />
+			</h:selectOneMenu>
+
+<h:commandButton id="btn" class="btn btn-info btn-block" value="ok"  action="#{FormationBean.ajouterFormation()}" />
+<h:message for="btn"/>
+<h:commandButton id="btn1" class="btn btn-info btn-block" value="update" action="#{FormationBean.modifierformation()}" />
+<h:message for="btn"/>
+</h:panelGrid>
+</h:form>
+
+
+</ui:define>
+</ui:composition>

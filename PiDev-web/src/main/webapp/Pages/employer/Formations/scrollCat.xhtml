@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/tmp/layoutadmin1.xhtml"
+xmlns:p="http://primefaces.org/ui">
+
+
+ <ui:define name="menu">
+<h:form id="content" class="form-inline">
+ <h:panelGroup columns="2">
+
+ <h:dataTable value="#{CatalogBean.afficherCatalogs()}" var="Catalog"   class="list-group"  style="width:100%">
+ 
+
+<h:column><f:facet name="header"><h:outputText value="Cliquer pour voir la liste de formation de chaque catalog" /></f:facet>
+<h:commandButton action="#{CatalogBean.formationPerCatalog(Catalog.id_cat)}" value="#{Catalog.nom_cat} " class="mb-1 list-group-item btn-block " >
+   
+   
+</h:commandButton>
+</h:column>
+ 
+
+</h:dataTable>
+</h:panelGroup>
+</h:form>
+
+</ui:define>
+</ui:composition>
+ 

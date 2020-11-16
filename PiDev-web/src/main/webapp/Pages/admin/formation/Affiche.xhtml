@@ -1,0 +1,66 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/tmp/layoutadmin1.xhtml"
+xmlns:p="http://primefaces.org/ui">
+
+
+ <ui:define name="menu">
+<h:form id="content">
+ <h:panelGroup columns="2">
+
+<h:dataTable id="example" value="#{FormationBean.formations}" var="formation" 
+ class="table table-sm table-striped table-hoverd"  style="width:100%"
+   paginator="true" 
+           >
+
+<h:column><f:facet name="header"><h:outputText value="nom formation" /></f:facet>
+<h:outputText value="#{formation.nom_for}" /></h:column>
+
+<h:column><f:facet name="header"><h:outputText value="prerequis" /></f:facet>
+<h:outputText value="#{formation.prerequis}" /></h:column>
+
+<h:column><f:facet name="header"><h:outputText value="niveau atteind" /></f:facet>
+<h:outputText value="#{formation.niveauobt}" /></h:column>
+
+<h:column><f:facet name="header"><h:outputText value="nom formatteur" /></f:facet>
+<h:outputText value="#{formation.nom_anim}" /></h:column>
+
+<h:column><f:facet name="header"><h:outputText value="Description" /></f:facet>
+<h:outputText value="#{formation.description}" /></h:column>
+
+<h:column><f:facet name="header"><h:outputText value="Date" /></f:facet>
+<h:outputText value="#{formation.date_debut}" /></h:column>
+
+<h:column><f:facet name="header"><h:outputText value="Duree" /></f:facet>
+<h:outputText value="#{formation.duree}" /></h:column>
+
+<h:column><f:facet name="header"><h:outputText value="Lieu" /></f:facet>
+<h:outputText value="#{formation.lieu}" /></h:column>
+
+<h:column><f:facet name="header"><h:outputText value="Catalog" /></f:facet>
+<h:outputText value="#{formation.cat.nom_cat}" /></h:column>
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton class="btn-info" action="#{FormationBean.removeFormation(formation.id_for)}" value="Supprimer" />
+</h:column>
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton class="btn-info" action="#{FormationBean.displayFormation(formation) }" value="voir" />
+</h:column>
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton class="btn-info" action="#{FormationBean.participer(formation) }" value="participer" />
+</h:column>
+</h:dataTable>
+</h:panelGroup>
+</h:form>
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+</ui:define>
+</ui:composition>
+ 

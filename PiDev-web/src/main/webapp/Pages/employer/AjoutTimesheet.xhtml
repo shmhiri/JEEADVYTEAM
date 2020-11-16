@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"	
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:p="http://primefaces.org/ui"
+	
+template="/tmp/layoutadmin1.xhtml">
+
+	<ui:define name="title">Ajout Timesheet</ui:define>
+	<ui:define name="content">
+	
+	
+<h:form id="form"> 
+<h1>Add Timesheet</h1> 
+<h:panelGroup columns="2"><h:form><table>
+        	<tr> 
+                 <td>  <h:outputLabel value="Date debut :" /> </td> 
+				<td> <h:inputText value="#{timesheetbean.date_from}"  required="true" requiredMessage="Date Début Obligatoire" id="DateD"> 
+				   <f:convertDateTime pattern="yyyy-MM-dd"/>  
+               	     <h:message for="DateD" errorStyle="color:red;"/>
+               	     				 </h:inputText>
+               	     </td>
+        </tr>
+        <tr>
+				<td> <h:outputLabel value="Date De Creation :" /> </td> 
+				<td> <p:calendar value="#{timesheet.date}" pattern="MM/dd/yyyy" id="DateC"></p:calendar> 
+				<h:message for="DateC" errorStyle="color:red;"/> </td>
+			</tr>
+         	<tr> 
+               <td> <h:outputLabel value="Date fin :" /> </td> 
+				<td> <h:inputText  value="#{timesheetbean.date_to}" required="true" requiredMessage="Date fin Obligatoire" id="DateF">
+				   <f:convertDateTime pattern="yyyy-MM-dd"/>
+ 				<h:message for="DateF" errorStyle="color:red;"/>
+ 				</h:inputText> </td>
+         </tr>
+         <tr>
+				<td> <h:outputLabel value="Description :" id="desc"/> </td> 
+				<td> <h:inputTextarea value="#{timesheetbean.comment}" id="Description"/>
+				 <h:message for="Description" errorStyle="color:red;"/> </td>
+			</tr>
+ <tr><td colspan="2"> <h:commandButton id="btn" value="Ajouter Timesheet" action="#{timesheetbean.addTimesheet()}" /> <h:message for="btn"/></td></tr>
+ 
+</table></h:form></h:panelGroup>
+</h:form> 
+		
+		</ui:define>
+	
+	
+	
+</ui:composition>

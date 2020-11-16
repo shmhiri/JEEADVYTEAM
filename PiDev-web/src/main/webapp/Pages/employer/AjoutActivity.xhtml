@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"	
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:p="http://primefaces.org/ui"
+	
+template="/tmp/layoutadmin1.xhtml">
+
+	<ui:define name="title">Ajout Activity</ui:define>
+	<ui:define name="content">
+	
+	 <script>
+        function desactiver(){
+             event.target.setAttribute("disabled", "disabled");
+            console.log(event.target)
+            console.log(this)
+        }
+
+    </script>
+<h:form id="form"> 
+<h1>Add Activity</h1> 
+<h:panelGroup columns="2"><h:form><table>
+        	<tr> 
+                 <td>  <h:outputLabel value="Date debut :" /> </td> 
+				<td> <h:inputText value="#{activitybean.datedebut}"  required="true" requiredMessage="Date Début Obligatoire" id="DateD"> 
+				   <f:convertDateTime pattern="yyyy-MM-dd"/>  
+               	     <h:message for="DateD" errorStyle="color:red;"/>
+               	     				 </h:inputText>
+               	     </td>
+        </tr>
+        
+         	<tr> 
+               <td> <h:outputLabel value="Date fin :" /> </td> 
+				<td> <h:inputText  value="#{activitybean.datefin}" required="true" requiredMessage="Date fin Obligatoire" id="DateF">
+				   <f:convertDateTime pattern="yyyy-MM-dd"/>
+ 				<h:message for="DateF" errorStyle="color:red;"/>
+ 				</h:inputText> </td>
+         </tr>
+         <tr>
+				<td> <h:outputLabel value="Description :" id="desc"/> </td> 
+				<td> <h:inputTextarea value="#{activitybean.otherdetai}" required="true" requiredMessage="Date fin Obligatoire" id="Description"/>
+				 <h:message for="Description" errorStyle="color:red;"/> </td>
+			</tr>
+			
+ <tr><td colspan="2"> <h:commandButton id="btn" value="Ajouter Activité" action="#{activitybean.addActivity()}" class="btn-info" /> <h:message for="btn"/></td></tr>
+ 
+</table></h:form></h:panelGroup>
+</h:form> 
+		
+		</ui:define>
+	
+	
+	
+</ui:composition>

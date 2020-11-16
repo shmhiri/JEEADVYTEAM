@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/tmp/layoutadmin1.xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="content">
+		<ui:param name="page_name" value="Connexion" /> 
+			    					> 
+			<h:form id="form">
+
+			<h:panelGroup columns="2">
+				<h:form>
+					<table>
+						<tr>
+							<td><h:outputText value="subject"></h:outputText></td>
+							<td><h:inputText id="subject" value="#{missionBean.subject}"
+									required="true" requiredMessage="You must enter subject"
+									a:placeholder="First Name"></h:inputText></td>
+						</tr>
+						<tr>
+							<td><h:message for="subject" style="color:green" /></td>
+						</tr>
+
+
+						<tr>
+							<td><h:outputText value="place"></h:outputText></td>
+							<td><h:inputText id="place" value="#{missionBean.place}"
+									required="true" requiredMessage="You must enter a Place"
+									a:placeholder="City"></h:inputText></td>
+						</tr>
+						<tr>
+							<td><h:message for="place" style="color:green" /></td>
+						</tr>
+
+						<tr>
+							<td><h:outputText value="date debut"></h:outputText></td>
+							<td><h:inputText id="datedeb"
+									value="#{missionBean.datedebut}" required="true"
+									requiredMessage="You must enter date">
+									<f:convertDateTime pattern="yyyy/MM/dd" />
+								</h:inputText></td>
+						</tr>
+						<tr>
+							<td><h:message for="datedeb" style="color:green" /></td>
+						</tr>
+
+						<tr>
+							<td><h:outputText value="date fin"></h:outputText></td>
+							<td><h:inputText id="datefin" value="#{missionBean.datefin}"
+									required="true" requiredMessage="You must enter date">
+									<f:convertDateTime pattern="yyyy/MM/dd" />
+								</h:inputText></td>
+						</tr>
+						<tr>
+							<td><h:message for="datefin" style="color:green" /></td>
+						</tr>
+
+
+						<tr>
+							<td><h:outputText value="description"></h:outputText></td>
+							<td><h:inputTextarea id="description" required="true"
+									value="#{missionBean.description}"
+									requiredMessage="You must enter description"></h:inputTextarea></td>
+						</tr>
+						<tr>
+							<td><h:message for="description" style="color:red" /></td>
+						</tr>
+						<tr>
+							<td><h:outputText value="is accomondation provided"></h:outputText></td>
+							<td><h:selectBooleanCheckbox
+									value="#{missionBean.isProvidedAccd}"></h:selectBooleanCheckbox></td>
+						</tr>
+						<tr>
+							<td><h:outputText value="is transport provided"></h:outputText></td>
+							<td><h:selectBooleanCheckbox
+									value="#{missionBean.isProvidedTrsp}"></h:selectBooleanCheckbox></td>
+						</tr>
+						<tr>
+							<td><h:outputText value="first Skill"></h:outputText></td>
+							<td><h:selectOneMenu id="slillvalue"
+									value="#{missionBean.skill}" required="true"
+									requiredMessage="You choose a skill ">
+									<f:selectItem itemLabel="Choisir skill" itemValue="" />
+									<f:selectItems value="#{skilll.skillTypes}" />
+								</h:selectOneMenu></td>
+						</tr>
+						<tr>
+							<td><h:outputText value="second Skill"></h:outputText></td>
+							<td><h:selectOneMenu id="secondskill"
+									value="#{missionBean.secondSkill}">
+									<f:selectItem itemLabel="Choisir skill" itemValue="" />
+									<f:selectItems value="#{skilll.skillTypes}" />
+								</h:selectOneMenu></td>
+						</tr>
+						<tr>
+							<td><h:outputText value="third Skill"></h:outputText></td>
+							<td><h:selectOneMenu id="thirdskill"
+									value="#{missionBean.thirdSkill}">
+									<f:selectItem itemLabel="Choisir skill" itemValue="" />
+									<f:selectItems value="#{skilll.skillTypes}" />
+								</h:selectOneMenu></td>
+						</tr>
+						<tr>
+							<td><h:message for="slillvalue" style="color:red" /></td>
+						</tr>
+
+
+
+						<tr>
+							<td><h:outputText
+									value="Estimation for the mission price in dinnars"></h:outputText></td>
+
+							<td><h:inputText id="prix" value="#{missionBean.estimation}"
+									disabled="#{Action.disabled}"
+									a:placeholder="#{missionBean.estimation}">
+								</h:inputText> <h:commandButton value="enable field" action="#{Action.able}"
+									update="prix"></h:commandButton></td>
+						</tr>
+
+						<tr>
+							<td colspan="2"><h:commandButton id="btn"
+									value="Ajouter Mission" action="#{missionBean.addMission()}" />
+								<h:message for="btn" /></td>
+						</tr>
+					</table>
+				</h:form>
+			</h:panelGroup>
+
+
+			<tr>
+				<td colspan="2"><h:commandButton value="Go Back"
+						action="#{missionBean.goBack()}" /></td>
+			</tr>
+		</h:form>
+	</ui:define>
+</ui:composition>

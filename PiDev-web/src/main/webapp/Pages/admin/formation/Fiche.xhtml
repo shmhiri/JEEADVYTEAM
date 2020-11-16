@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/tmp/layout.xhtml"
+xmlns:p="http://primefaces.org/ui"
+>
+
+<ui:define name="menu">
+<h:form id="content">
+<h1>Ajout formation</h1>
+<h:panelGrid columns="2">
+<h:outputText value="NoteConception" /> <h:inputText value="#{FicheBean.noteConception}" />
+<h:outputText value="NoteGestionProjet" /> <h:inputText value="#{FicheBean.noteGestionProjet}" />
+<h:outputText value="NoteReporting" /> <h:inputText value="#{FicheBean.noteReporting}" />
+<h:outputText value="NoteDevLogiciel" /> <h:inputText value="#{FicheBean.noteDevLogiciel}" />
+
+<h:outputText value="NoteMethodesAgile" /> <h:inputText value="#{FicheBean.noteMethodesAgile}" />
+
+
+<h:selectOneMenu value="#{FicheBean.maitrise}">
+<f:selectItem itemLabel="Choisir Role" itemValue=""/>
+		<f:selectItems value="#{MaitriseBean.maitrises}" />
+			</h:selectOneMenu>
+
+<h:commandButton id="btn" value="ok" action="#{FicheBean.Ajoutfiche()}" />
+<h:message for="btn"/>
+<h:commandButton id="btn1" value="update" action="#{FormationBean.modifierformation()}" />
+<h:message for="btn"/>
+</h:panelGrid>
+</h:form>
+</ui:define>
+</ui:composition>

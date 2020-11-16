@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"	
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+		 xmlns:p="http://primefaces.org/ui"
+	
+template="/tmp/layoutadmin1.xhtml">
+
+	<ui:define name="title">Upload Video</ui:define>
+	<ui:define name="content">
+	
+	 <script>
+        function desactiver(){
+             event.target.setAttribute("disabled", "disabled");
+            console.log(event.target)
+            console.log(this)
+        }
+
+    </script>
+	<center>
+		<h1>List Des Videos</h1>
+		<br /><br /><br />
+		
+		<h:form id="form_video" enctype="multipart/form-data">
+		
+			<br/><br/>
+			
+			<table>
+			<tr>
+				<td> <h:outputLabel value="Titre :" /> </td>
+				<td> <h:inputText value="#{videoBean.video.title}" label="Veuillez mettre un titre"/> </td>
+			</tr>
+			<tr>
+				<td> <h:outputLabel value="Description :" /> </td>
+				<td> <h:inputText value="#{videoBean.video.description}" label="Veuillez mettre une description"/> </td>
+			</tr>
+			<tr>
+				<td>
+				<span class="btn btn-default btn-file"> 
+				<h:inputFile value="#{videoBean.file}" label="Veuillez upload video" name="file" id="file" class="inputfile"/> 
+				</span>
+				</td>
+			</tr>
+			</table>
+			<br/><br/>
+
+			<h:commandButton action="#{videoBean.doUploadVideo()}"  value="Upload Video" class="btn-info"/>
+			
+			
+		</h:form>
+		
+	</center>
+		</ui:define>
+	
+	
+	
+</ui:composition>

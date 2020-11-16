@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/tmp/layoutadmin1.xhtml"
+	 xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+        <ui:define name="content"> 
+<h:form id="form"> 
+<h1>Welcome Employee</h1>
+
+<tr><td><h:outputText value="first Skill"></h:outputText></td><td>
+<h:selectOneMenu id="slillvalue"  value="#{missionchouseBean.skill}"  required="true"  requiredMessage="You choose a skill "  >
+<f:selectItem itemLabel="Choisir skill" itemValue=""/>
+<f:selectItems value="#{skilll.skillTypes}" />
+</h:selectOneMenu></td></tr>
+
+<h:panelGroup columns="2"><h:form><table>
+<tr><td colspan="2"> <h:commandButton value="Mission the skill you want" action="#{missionchouseBean.goToDisplayMissions()}" /></td></tr>
+<tr><td colspan="2"> <h:commandButton value="all missions" action="#{missionBean.consultMissions()}" /></td></tr>
+
+
+</table></h:form></h:panelGroup>
+</h:form> 
+</ui:define> 
+</ui:composition>

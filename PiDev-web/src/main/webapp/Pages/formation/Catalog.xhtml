@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/tmp/layoutadmin1.xhtml"
+xmlns:p="http://primefaces.org/ui">
+
+
+<ui:define name="menu">
+<h:form id="content">
+<h1>Catalog</h1>
+<h:panelGrid columns="2">
+<h:outputText value="Nom du catalog" /> <h:inputText value="#{CatalogBean.nom_cat}" />
+ <h:panelGroup columns="2">
+
+<h:dataTable value="#{CatalogBean.afficherCatalogs()}" var="Catalog" border="1">
+
+<h:column><f:facet name="header"><h:outputText value=" Catalog" /></f:facet>
+<h:outputText value="#{Catalog.nom_cat}" /></h:column>
+
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton action="#{CatalogBean.removeCatalog(Catalog.id_cat)}" value="Supprimer" />
+</h:column>
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton action="#{CatalogBean.getListformations(Catalog.id_cat)}" value="Voir" />
+</h:column>
+</h:dataTable>
+</h:panelGroup>
+
+<p> Selectionner les formations à ajouter au catalog<br />
+
+
+
+<h:selectManyListbox value="#{CatalogBean.selectedFormations}" >
+   			<f:selectItems value="#{CatalogBean.Affiche() }" var="f"
+   			itemLabel="#{f.nom_for}" itemValue="#{f.nom_for}" />
+   		</h:selectManyListbox>
+
+
+</p>
+
+
+
+<h:commandButton id="btn" value="ok" action="#{CatalogBean.AddCatalog()}" />
+<h:message for="btn"/>
+<h:commandButton id="btn1" value="update" action="#{FormationBean.modifierformation()}" />
+<h:message for="btn"/>
+</h:panelGrid>
+</h:form>
+
+</ui:define>
+</ui:composition>

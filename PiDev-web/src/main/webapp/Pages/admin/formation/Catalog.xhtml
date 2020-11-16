@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/tmp/layoutadmin1.xhtml"
+xmlns:p="http://primefaces.org/ui">
+
+
+<ui:define name="menu">
+<h:form id="content">
+<h1>Catalog</h1>
+<h:panelGrid columns="2">
+<p> Créer un nouveau catalog<br />
+
+</p>
+<h:outputText value="Nom du catalog" /> <h:inputText value="#{CatalogBean.nom_cat}" class="form-control" />
+
+<h:commandButton id="btn" class="btn btn-info btn-block" value="Suivant>>" action="#{CatalogBean.AddCatalog()}" />
+<h:message for="btn"/>
+
+ <h:panelGroup columns="2">
+
+
+</h:panelGroup>
+<h:dataTable value="#{CatalogBean.afficherCatalogs()}" var="Catalog"  class="table table-sm table-striped table-hoverd"  style="width:100%">
+
+<h:column><f:facet name="header"><h:outputText value=" Catalog" /></f:facet>
+<h:outputText value="#{Catalog.nom_cat}" /></h:column>
+
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton class="btn-info" action="#{CatalogBean.removeCatalog(Catalog.id_cat)}" value="Supprimer" />
+</h:column>
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton class="btn-info" action="#{CatalogBean.detailsCatalog(Catalog.id_cat)}" value="Details" />
+</h:column>
+</h:dataTable>
+</h:panelGrid>
+</h:form>
+
+</ui:define>
+</ui:composition>

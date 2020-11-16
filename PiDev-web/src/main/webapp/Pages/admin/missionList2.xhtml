@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/tmp/layoutadmin1.xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	<ui:define name="stylesheets">
+		<link rel="stylesheets" href="#{request.contextPath}/resources/Back/css/plugins/footable/footable.core.css"></link>
+	</ui:define>
+	<ui:define name="javascripts">
+		<script src="#{request.contextPath}/resources/Back/js/plugins/footable/footable.all.min.js"></script>
+		<script>
+		$(document).ready(function() {
+            $('.footable').footable();
+        });
+		</script>
+	</ui:define>
+	<ui:define name="content">
+		<div class="col-12">
+			<div class="ibox">
+				<div class="ibox-content">
+					<table class="footable table table-stripped toggle-arrow-tiny"
+						data-page-size="15">
+						<thead>
+							<tr>
+							<th>subject</th>
+								<th>description</th>
+								<th data-hide="phone">date of add</th>
+								<th data-hide="phone">skillsRequired</th>
+								<th data-hide="phone">start date </th>
+								<th data-hide="phone">end Date</th>
+								<th data-hide="phone">Place</th>
+								<th data-hide="phone">estimation</th>
+								<th data-hide="phone">is Accomadtion Provided</th>
+								<th data-hide="phone">is Trspport Provided</th>
+								<th data-hide="phone">etat</th>
+								<th data-hide="phone">nbr of participation</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<ui:repeat var="mission" value="#{missionBean.missions}">
+								<tr>
+									<td><h:outputText value="#{mission.subject}" /></td>
+									<td><h:outputText value="#{mission.description}" /></td>
+									<td><h:outputText value="#{mission.date}" /></td>
+									<td>
+										<h:outputText value="#{mission.skillsRequired} " />
+										<h:outputText value="#{mission.secondSkill} " />
+										<h:outputText value="#{mission.thirdSkill}" />	
+									</td>
+									<td><h:outputText value="#{mission.datedebut}" /></td>
+									<td><h:outputText value="#{mission.datefin}" /></td>
+									<td><h:outputText value="#{mission.place}" /></td>
+									<td><h:outputText value="#{mission.estimation}" /></td>
+									<td><h:outputText value="#{mission.isProvidedAccd == true ? 'Oui' : 'Non'}" /></td>
+									<td><h:outputText value="#{mission.isProvidedTrsp == true ? 'Oui' : 'Non'}" /></td>
+									<td><h:outputText value="#{mission.etat}" /></td>
+									<td><h:outputText value="#{mission.participantsNumber}" /></td>
+									<td>
+										<h:form>
+											<h:commandButton
+												action="#{missionBean.deleteMission(mission.refrence)}"
+												value="Delete" 
+											/>
+											<h:commandButton 
+												action="#{missionBean.displayDetails(mission)}"
+												value="Display Details" 
+											/>
+										</h:form>
+									</td>
+								</tr>
+							</ui:repeat>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="13">
+									<ul class="pagination float-right"></ul>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

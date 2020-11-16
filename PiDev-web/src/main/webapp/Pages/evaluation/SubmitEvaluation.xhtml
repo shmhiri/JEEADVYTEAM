@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/tmp/layoutadmin1.xhtml"
+xmlns:p="http://primefaces.org/ui"
+xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+<ui:define name="menu">
+<h:form id="content">
+<h1>Submit Evaluation</h1>
+<h:panelGrid columns="2">
+<h:outputText value="You selected the employee : #{Evaluation360Bean.employeename}"></h:outputText><br></br>
+<h:outputText value="Select the employees who can evaluate"/> <h:selectOneMenu value="#{Evaluation360Bean.coworkerid}">
+<c:forEach items="#{Evaluation360Bean.employee}" var="e">
+<c:if test="#{Evaluation360Bean.employeename!=e.name}">
+<f:selectItem itemValue="#{e.id}" itemLabel="#{e.name}"/>
+</c:if>
+</c:forEach>
+</h:selectOneMenu>
+<h:commandButton id="btn" value="Add Evaluation" action="#{Evaluation360Bean.AddEvaluation360()}" onclick="alert('Evaluation Added!')" />
+<h:message for="btn"/>
+</h:panelGrid>
+</h:form>
+
+</ui:define>
+</ui:composition>

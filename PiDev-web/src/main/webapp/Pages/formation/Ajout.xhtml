@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/tmp/layoutadmin1.xhtml"
+xmlns:p ="http://primefaces.org/ui">
+
+
+
+
+
+
+ 
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style>
+ 
+
+
+<ui:define name="menu">
+<h:form id="content" >
+<h1>Ajout formation</h1>
+<h:panelGrid columns="2" class="form-row">
+<h:outputText value="Nom de la formation" /> <h:inputText value="#{FormationBean.nom_for}" class="form-control" />
+<h:outputText value="Prerequis" /> <h:inputText value="#{FormationBean.prerequis}" />
+<h:outputText value="Niveau à atteindre"></h:outputText>
+<h:selectOneMenu value="#{FormationBean.niveauobt}">
+<f:selectItem itemLabel="" itemValue=""/>
+		<f:selectItems value="#{MaitriseBean.maitrises}" />
+			</h:selectOneMenu>
+
+
+
+<h:outputText value="Nom du formateur" /> <h:inputText value="#{FormationBean.nom_anim}" />
+<h:outputText value="Description" /> <h:inputTextarea cols="14" rows="4" style="width:150" value="#{FormationBean.description}"  > </h:inputTextarea>
+<h:outputText value="Date debut" /> 
+ <h:inputText value="#{FormationBean.date_debut}"> 
+    <f:convertDateTime pattern="MM/dd/yyyy" />
+</h:inputText>
+
+<h:outputText value="Durée" /> <h:inputText value="#{FormationBean.duree}" />
+<h:outputText value="Lieu" /> <h:inputText value="#{FormationBean.lieu}" />
+<h:outputText value="Selectionner un catalog"></h:outputText>
+
+<h:selectOneMenu value="#{FormationBean.selectedCatalogId}">
+		<f:selectItems value="#{FormationBean.catalogs}" var="category"
+		 itemValue="#{category.id_cat}" itemLabel="#{category.nom_cat}" />
+			</h:selectOneMenu>
+
+<h:commandButton id="btn" value="ok" action="#{FormationBean.ajouterFormation()}" />
+<h:message for="btn"/>
+<h:commandButton id="btn1" value="update" action="#{FormationBean.modifierformation()}" />
+<h:message for="btn"/>
+</h:panelGrid>
+</h:form>
+
+
+</ui:define>
+</ui:composition>

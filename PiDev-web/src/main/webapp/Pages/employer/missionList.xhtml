@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+   template="/tmp/layoutadmin1.xhtml"
+   xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+ <ui:define name="content">
+<h:form>
+<h:panelGroup columns="2"  class="form-group" > <h:form> <h:dataTable value="#{missionBean.missions}" var="mission" border="1">
+<h:column><f:facet name="header"><h:outputText value="subject" /></f:facet> <h:outputText value="#{mission.subject}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="description" /></f:facet> <h:outputText value="#{mission.description}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="date ajout" /></f:facet> <h:outputText value="#{mission.date}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="skillsRequired 1" /></f:facet> <h:outputText value="#{mission.skillsRequired}" /></h:column>
+
+<h:column><f:facet name="header"><h:outputText value="skillsRequired 2" /></f:facet> <h:outputText value="#{mission.secondSkill}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="skillsRequired 3" /></f:facet> <h:outputText value="#{mission.thirdSkill}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="date debut" /></f:facet> <h:outputText value="#{mission.datedebut}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="date fin" /></f:facet> <h:outputText value="#{mission.datefin}" /></h:column>
+
+
+<h:column><f:facet name="header"><h:outputText value="Place" /></f:facet> <h:outputText value="#{mission.place}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="estimation" /></f:facet> <h:outputText value="#{mission.estimation}" /></h:column>
+
+
+
+<h:column><f:facet name="header"><h:outputText value="isProvidedAccd" /></f:facet> <h:outputText value=" #{mission.isProvidedAccd == true ? 'Oui' : 'Non'}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="isProvidedTrsp" /></f:facet> <h:outputText value=" #{mission.isProvidedTrsp == true ? 'Oui' : 'Non'}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="etat" /></f:facet> <h:outputText value="#{mission.etat}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="nbr of participation" /></f:facet> <h:outputText value="#{mission.participantsNumber}" /></h:column>
+<h:column>
+<f:facet name="header"><h:outputText value="Action" />
+</f:facet> 
+
+<h:commandButton action="#{missionBean.askForMission(mission)}"   onclick="var e=this;setTimeout(function(){e.disabled=true;},0);return true;"  value="ApplyForMission" >
+</h:commandButton>
+</h:column>
+
+</h:dataTable> </h:form> </h:panelGroup>
+<tr><td colspan="2"> <h:commandButton value="Go Back" action="#{missionBean.goBack()}" /></td></tr>
+<h:form>
+
+
+</h:form>
+
+
+</h:form> </ui:define></ui:composition>
